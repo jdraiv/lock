@@ -7,9 +7,13 @@ from pymongo import MongoClient
 
 
 app = Sanic()
-keys = set_keys('MONGO_URL')
+keys = set_keys('MONGO_URL', 'BCRYPT_KEY')
+mongo_db = MongoClient(keys['MONGO_URL'])['lock-dev']
 
-mongo_db = MongoClient(keys['MONGO_URL'])['intervals-dev']
+
+from blueprints.auth.main import auth_module
+
+app.blueprint(auth_module)
 
 
 @app.route('/')
