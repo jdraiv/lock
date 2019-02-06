@@ -14,7 +14,6 @@ class CreateAcc:
 
         if user_obj == None and password != None:
             encrypted_pw = bcrypt.hashpw(str.encode(password), bcrypt.gensalt())
-            print(encrypted_pw)
 
             mongo_db.users.insert_one({'user_id': user_id, 'password': encrypted_pw, 'chats': [], 'contacts': []})
             return True
