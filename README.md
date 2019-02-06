@@ -1,0 +1,3 @@
+# Lock
+
+Secure, private chatrooms
