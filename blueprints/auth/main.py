@@ -22,7 +22,7 @@ async def create_account(request):
     call_data = request_json(request, ['user_id', 'password'])
 
     if call_data['valid_call']:
-        if CreateAcc.valid_user_id(call_data['data']['user_id'], call_data['data']['password']):
+        if CreateAcc.attemp_user_creation(call_data['data']['user_id'], call_data['data']['password']):
             return json(internal_response(status="success", message="User created"))
         return json(internal_response(status="error", message="Username is not available"))
     else:
