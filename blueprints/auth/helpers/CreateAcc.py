@@ -27,6 +27,7 @@ class CreateAcc:
                 'user_id': user_id,
                 'password': encrypted_pw,
                 'chats': [],
+                'contacts': [],
                 'settings': {
                     'privacy': {"view_profile_picture": "Contacts", "view_status": "Contacts", "contact_me": "Contacts"},
                     'profile': {"picture": "", "status": ""}
