@@ -28,4 +28,12 @@ async def delete_contact(request):
 
     return json(process_info)
 
+@contacts_module.route('/get_contacts', methods=['GET'])
+async def get_contacts(request):
+    call_data = request_json(request, ['user_id'])
+
+    process_info = ContactsHandler.get_contacts(call_data['data']['user_id'])
+
+    return json(process_info)
+
 

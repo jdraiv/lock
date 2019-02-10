@@ -40,4 +40,8 @@ class ContactsHandler:
 
     @staticmethod
     def get_contacts(user_id):
-        pass
+        user_obj = mongo_db.users.find_one({'user_id': user_id})
+
+        if user_obj != None:
+            return internal_response(status="success", message="Retrieved contacts", data=user_obj['contacts'])
+        return internal_response(status="success", message="Unknown user id")
