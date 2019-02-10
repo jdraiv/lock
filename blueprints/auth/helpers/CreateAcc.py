@@ -48,9 +48,9 @@ class CreateAcc:
         if CreateAcc.valid_user_id(user_id, password):
             # Create user
             if CreateAcc.store_user(user_id, password):
-                return True
+                return internal_response(status="success", message="User created")
             else:
-                return False
+                return internal_response(status="error", message="Unknown error")
         else:
             # Error, username is not available
-            return False
+            return internal_response(status="error", message="Username is not available")

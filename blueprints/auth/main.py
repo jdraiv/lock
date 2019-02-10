@@ -21,22 +21,15 @@ async def create_account(request):
 
     call_data = request_json(request, ['user_id', 'password'])
 
-    if call_data['valid_call']:
-        if CreateAcc.attemp_user_creation(call_data['data']['user_id'], call_data['data']['password']):
-            return json(internal_response(status="success", message="User created"))
-        return json(internal_response(status="error", message="Username is not available"))
-    else:
-        return json(internal_response(status="success", message="Unknown error"))
+    process_info = CreateAcc.attemp_user_creation(call_data['data']['user_id'], call_data['data']['password'])
 
+    return json(process_info)
 
 @auth_module.route('/login', methods=['POST'])
 async def log_user(request):
 
     call_data = request_json(request, ['user_id', 'password'])
 
-    if call_data['valid_call']:
-        if LogAcc.valid_credentials(call_data['data']['user_id'], call_data['data']['password']):
-            return json(internal_response(status="success", message="Valid credentials"))
-        return json(internal_response(status="error", message="Incorrect username or password"))
-    else:
-        return json(internal_response(status="success", message="Unknown user"))
+    process_info = LogAcc.valid_credentials(call_data['data']['user_id'], call_data['data']['password'])
+
+    return json(process_info)
