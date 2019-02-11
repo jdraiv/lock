@@ -7,6 +7,8 @@ name = "pypi"
 sanic = "*"
 pymongo = "*"
 bcrypt = "*"
+pyjwt = "*"
+pyrtk = "*"
 
 [dev-packages]
 

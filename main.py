@@ -8,7 +8,7 @@ from pymongo import MongoClient
 
 
 app = Sanic()
-keys = set_keys('MONGO_URL', 'BCRYPT_KEY')
+keys = set_keys('MONGO_URL', 'BCRYPT_KEY', 'JWT_KEY', 'RTK_KEY')
 mongo_db = MongoClient(keys['MONGO_URL'])['lock-dev']
 
 
