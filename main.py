@@ -15,6 +15,8 @@ mongo_db = MongoClient(keys['MONGO_URL'])['lock-dev']
 from blueprints.auth.main import auth_module
 from blueprints.contacts.main import contacts_module
 
+from decorators.auth_decorators import jwt_required
+
 
 app.blueprint(auth_module)
 app.blueprint(contacts_module)
@@ -23,6 +25,12 @@ app.blueprint(contacts_module)
 @app.route('/')
 async def homepage(request):
     return text("test")
+
+
+@app.route('/protected')
+@jwt_required()
+async def test(request):
+    return text("Protected route")
 
 
 if __name__ == "__main__":
