@@ -26,6 +26,7 @@ async def create_account(request):
 
     return json(process_info)
 
+
 @auth_module.route('/login', methods=['POST'])
 async def log_user(request):
 
@@ -46,3 +47,5 @@ async def log_user(request):
         return response
 
     return json(process_info)
+
+
