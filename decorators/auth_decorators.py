@@ -9,6 +9,7 @@ def jwt_required():
         async def decorated_function(request, *args, **kwargs):
             json_token = request.cookies.get('lock-jwt')
             refresh_token = request.cookies.get('lock-rtk')
+            
 
             if json_token != None and refresh_token != None:
                 response = await f(request, *args, **kwargs)
