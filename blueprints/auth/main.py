@@ -13,8 +13,12 @@ from main import keys
 from global_helpers.response import internal_response
 from global_helpers.request_json import request_json
 from global_helpers.tokens_controller import create_jwt, create_rtk
+from global_helpers.templates import set_templates_env, render_template
 from .helpers.CreateAcc import CreateAcc
 from .helpers.LogAcc import LogAcc
+
+
+auth_templates_env = set_templates_env('main', 'pages/auth/views')
 
 
 @auth_module.route('/create_account', methods=['POST'])
@@ -47,5 +51,10 @@ async def log_user(request):
         return response
 
     return json(process_info)
+
+
+@auth_module.route('/login_view')
+async def login_view(request):
+    return render_template('login', auth_templates_env)
 
 
